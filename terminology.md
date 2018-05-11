@@ -1,3 +1,5 @@
+Go back to the [main page](README.md).
+
 # Git terminology (with git servers)
 
 While all of the git servers feature sets are roughly the same, they vary in their terminology and interfaces. This can be confusing if you switch between servers. Here's a cheat sheet:
