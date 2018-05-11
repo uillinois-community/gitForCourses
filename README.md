@@ -167,20 +167,21 @@ Who's done this:
 
 ## Assignment distribution
 
-### Course triggers it
+### Course triggers distribution
 
-### Student triggers it
+### Student triggers distribution
 
-### Happens on provision
+### Provisioning triggers distribution
 
+For repository-per-assignment models, the act of provisioning can also trigger "seeding" the directory with the distribution files.
 
-
+GitHub Classroom does this well -- but only on github.com. Classroom, when used with GitHub Enterprise, does not support this file seeding. (Classroom uses a Source Import API that is in "public preview" on github.com but is not in the GHE product.)
 
 ## Assignment collection and grading
 
-### Course triggers it
+### Course triggers collection and grading
 
-### Student triggers it
+### Student triggers collection and grading
 
 
 ## How are graders returned?
