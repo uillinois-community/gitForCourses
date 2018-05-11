@@ -72,6 +72,8 @@ Who's done this:
 
 This is the model that [GitHub Classroom](https://classroom.github.com) uses. It could also be extended to one organization per assignment if further isolation was desirable.
 
+Note: Some IDEs better support one project per repository rather than shared projects in a single repository.
+
 Pros:
 - Repos are atomic to the whole assignment, so multiple repos checked out in different places for different assignments is less of a problem.
 - Grading and commit hooks are more straightforward.
@@ -110,7 +112,7 @@ Whether it's repos or organizations or branches, someone is going to need to do 
 
 There are three identified models for this:
 
-### Student provisions, student triggers it
+### Student provisions, student triggered
 
 In this model, the student creates a repository and does the configuration for it (typically adding in the course staff). This could live in a student-owned organization, or in a course-owned organization where students have create repo permissions.
 
@@ -130,7 +132,7 @@ Who's done this:
 
 This seems to work best for small classes (where tracking the number of repos to grade is easier) and for groups (where they decide and control the membership). This implies some knowledge of git configuration, which might be real-life-applicable for software engineering courses but complex for VCS newbies.
 
-### Course provisions, course triggers it
+### Course provisions, course triggered
 
 In this model, the course owns and creates all of the student repositories. Presumably, a script is run to iterate over a roster and do the same provisioning steps for each student who needs a repository created.
 
@@ -147,7 +149,7 @@ Cons:
 Who's done this:
 - Darko Marinov, Mattox Beckman
 
-### Course provisions, student triggers it
+### Course provisions, student triggered
 
 This hybrid attempts to marry the consistency of course-owned and provisioned repositories with the flexibility and control that student-triggered provisioning entails.
 
@@ -167,9 +169,27 @@ Who's done this:
 
 ## Assignment distribution
 
+All of these methods assume provisioning has already been done, although distribution may be included in the initial provision (or done immediately afterwards, for example with an introduction to git lab).
+
+Often coding assignments will start with some "seed" code that sets up the problem, or the environment. It may give stub code to fill in, or tests to run locally against it.
+
+Distribution implies the method in which the student gets that seed code into their repository to start working on it. Another workflow involves course staff updating that seed code (perhaps to fix bugs after the assignment was released) and the method where students update their copies.
+
 ### Course triggers distribution
 
+Similar to course triggered provisioning, course triggered distribution implies the course has a list of locations to copy the seed files into. This would put them directly into the student repository, commit, and push.
+
+Since this commit would change the repository independent from the checked out version, eventually a `git merge` would be required (likely as a `git pull`). Even though the course has triggered the distribution, the student would still need to run some commands to update their repo.
+
+However, because the distribution usually only adds files, the risk of merge conflicts is low.
+
 ### Student triggers distribution
+
+Since a merge is required for new files to be added to the repository anyway, a more git-friendly method involves the course making the seed code available on another repository.
+
+The student is responsible for fetching and merging from the distribution repository (or branch) into their location.
+
+This method is useful because it can be repeated if the distribution source repository is updated. Then, the typical git merge resolution methods apply so there's less chance of conflict.
 
 ### Provisioning triggers distribution
 
@@ -183,9 +203,7 @@ GitHub Classroom does this well -- but only on github.com. Classroom, when used 
 
 ### Student triggers collection and grading
 
-
-## How are graders returned?
-
+## How are grades returned?
 
 ### Regrade requests?
 
@@ -196,6 +214,12 @@ GitHub Classroom does this well -- but only on github.com. Classroom, when used 
     - Early provisioning is smart from a course perspective, but might trigger the students to respond or think they need to respond before the course is ready.
 - force pushing, i.e. rewriting git history, should be disabled for student repositories. This is especially true if grading is done based on timestamps from the git log.
 
+## Dave opinion
+
+- Student triggered activities are better than course triggered ones. It solves two problems:
+    - Courses not knowing exactly who their students are (at the needed time) or requiring things to be done (and redone and redone) in the proper sequence for the tools to be useful.
+    - Students unsure the state of their assignment (is it released? was it graded?) Those tasks are very deterministic (yes it worked, no it failed because X) and supported because they can be repeated with course staff.
+- The passive "leave it there and we'll grade it" is less effective than student triggered grading because of the immediacy of feedback. That's especially true if something went wrong (student mistake or uploaded wrong code) so that it could be corrected and regraded.
 
 ## Other resources
 
