@@ -34,9 +34,74 @@ Because the service is running on-premise by Illinois staff, there are no third-
 
 ## Terminology
 
-See the [terminology](terminology.md) page.
+For help muddling through what git and the git servers call their things, see the [terminology](terminology.md) page. This guide will largely follow the GitHub terminology.
+
 
 ## Assignments and repositories
+
+You have options on how you create assignments around git repositories.
+
+### One organization per semester, one repository per student, one directory per assignment
+
+- The organization is named per semester, i.e. `cs225-fa18`.
+- Repositories in the org are named by `netid` of the student.
+- Assignments are handled as directories inside the repo.
+    - Example: _cs225-fa18:mussulma/lab-intro_
+
+This model is closest to how courses used EWS's subversion service.
+
+Pros:
+- 1 repository simplifies the places for the student to look or setup.
+- Repositories can inherit organization-wide permissions, such as allowing course staff access to student repos with setup in one place.
+- Similar setup as subversion.ews.illinois.edu for student interaction and course tools.
+
+Cons:
+- Repositories need to be created by organization owners (which is also a positive, see below).
+- Any activities that hook off of changes (grading, CI) need to inspect at the directory level, not at the base repo.
+- Students may work on different directories in different locations (lab assignments on EWS computer, MP assignments on their laptop) requiring them to sync up their various copies so stale work doesn't get submitted.
+
+Who's done this:
+- [CS225](scenarios/cs225.md)
+
+### One organization per semester, one repository per student assignment
+
+- The organization is named per semester and assignment, i.e. `cs225-fa18-mp1`
+- Repositories are named by assignment and `netid` of the student.
+    - Example: _cs125-fa18:MP2-mussulma_
+- Assignments use the whole repo.
+
+This is the model that [GitHub Classroom](https://classroom.github.com) uses. It could also be extended to one organization per assignment if further isolation was desirable.
+
+Pros:
+- Repos are atomic to the whole assignment, so multiple repos checked out in different places for different assignments is less of a problem.
+- Grading and commit hooks are more straightforward.
+
+Cons:
+- Students need to `git clone` for each repository. They could get confused on what is where.
+- For large classes with many assignments, this could mean a large list of repositories.
+
+Who's done this:
+- [CS125](scenarios/cs125.md)
+
+### One organization per semester, one repository per student, one branch per assignment
+
+This twist on the __one repo per student__ model uses branches instead of just directories to isolate assignments.
+
+Pros:
+
+Cons:
+
+Who's done this:
+- [Harvard CS50](scenarios/harvard-cs50.md)
+
+## Who creates the environment for the assignment?
+
+
+## Assignment distribution
+
+
+
+## Assignment collection and grading
 
 
 
