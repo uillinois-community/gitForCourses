@@ -5,6 +5,37 @@ git for student assignment distribution, collection, grading, regrades, etc.
 
 For feedback, contact Dave Mussulman (<mussulma@illinois.edu>). Issues and PR's welcomed.
 
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [Git for Courses](#git-for-courses)
+	- [Services](#services)
+		- [GitHub.com](#githubcom)
+	- [GitLab](#gitlab)
+	- [GitHub Enterprise](#github-enterprise)
+	- [Terminology](#terminology)
+	- [Assignments and repositories](#assignments-and-repositories)
+		- [One organization per semester, one repository per student, one directory per assignment](#one-organization-per-semester-one-repository-per-student-one-directory-per-assignment)
+		- [One organization per semester, one repository per student-assignment](#one-organization-per-semester-one-repository-per-student-assignment)
+		- [One organization per semester, one repository per student, one branch per assignment](#one-organization-per-semester-one-repository-per-student-one-branch-per-assignment)
+	- [Who creates the environment for the assignment?](#who-creates-the-environment-for-the-assignment)
+		- [Student provisions, student triggered](#student-provisions-student-triggered)
+		- [Course provisions, course triggered](#course-provisions-course-triggered)
+		- [Course provisions, student triggered](#course-provisions-student-triggered)
+	- [Assignment distribution](#assignment-distribution)
+		- [Course triggers distribution](#course-triggers-distribution)
+		- [Student triggers distribution](#student-triggers-distribution)
+		- [Provisioning triggers distribution](#provisioning-triggers-distribution)
+	- [Assignment collection and grading](#assignment-collection-and-grading)
+		- [Course triggers collection and grading](#course-triggers-collection-and-grading)
+		- [Student triggers collection and grading](#student-triggers-collection-and-grading)
+	- [How are grades returned?](#how-are-grades-returned)
+		- [Regrade requests?](#regrade-requests)
+	- [Gotcha's we have learned](#gotchas-we-have-learned)
+	- [Dave opinion](#dave-opinion)
+	- [Other resources](#other-resources)
+
+<!-- /TOC -->
+
 ## Services
 
 Git is a version control systems for tracking changes in computer files and coordinating work on these files among multiple people. [Wikipedia](https://en.wikipedia.org/wiki/Git)
