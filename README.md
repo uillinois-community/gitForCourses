@@ -29,7 +29,11 @@ For feedback, contact Dave Mussulman (<mussulma@illinois.edu>). Issues and PR's 
 		- [Course triggers collection and grading](#course-triggers-collection-and-grading)
 		- [Student triggers collection and grading](#student-triggers-collection-and-grading)
 	- [How are grades returned?](#how-are-grades-returned)
+		- [Committing the feedback](#committing-the-feedback)
+		- [Handling inside of git but not a commit](#handling-inside-of-git-but-not-a-commit)
+		- [Handling outside of a git server](#handling-outside-of-a-git-server)
 		- [Regrade requests?](#regrade-requests)
+	- [Authorization, Permissions and AD groups](#authorization-permissions-and-ad-groups)
 	- [Gotcha's we have learned](#gotchas-we-have-learned)
 	- [Dave opinion](#dave-opinion)
 	- [Other resources](#other-resources)
@@ -208,7 +212,7 @@ Distribution implies the method in which the student gets that seed code into th
 
 ### Course triggers distribution
 
-Similar to course triggered provisioning, course triggered distribution implies the course has a list of locations to copy the seed files into. This would put them directly into the student repository, commit, and push.
+Similar to course triggered provisioning, course triggered distribution implies the course has a list of locations to copy the seed files into. The course already has a checkout of each student repository locally. This method of distribution involves the course puting seed files directly into the student repository, `git add`, `git commit`, and `git push` for each.
 
 Since this commit would change the repository independent from the checked out version, eventually a `git merge` would be required (likely as a `git pull`). Even though the course has triggered the distribution, the student would still need to run some commands to update their repo.
 
@@ -222,11 +226,29 @@ The student is responsible for fetching and merging from the distribution reposi
 
 This method is useful because it can be repeated if the distribution source repository is updated. Then, the typical git merge resolution methods apply so there's less chance of conflict.
 
+**Example:**
+
+In the same course organization, assignments are released in the `_release` repository (public to members of the organization). CS225 created new assignments as branches in this repo (i.e. `_release/lab3`.)
+
+The student has a private `netid` repository in the same organization. As a one time setup, the student adds the release repo as a remote:
+
+`git remote add release https://github-dev.cs.illinois.edu/cs225sp18/_release.git`
+
+Then to distribute (or update) the released assignment, the student runs:
+
+> `git fetch release`
+>
+> `git merge release/lab3 -m "Merging initial lab3 files"`
+
+
 ### Provisioning triggers distribution
 
 For repository-per-assignment models, the act of provisioning can also trigger "seeding" the directory with the distribution files.
 
 GitHub Classroom does this well -- but only on github.com. Classroom, when used with GitHub Enterprise, does not support this file seeding. (Classroom uses a Source Import API that is in "public preview" on github.com but is not in the GHE product.)
+
+Cons:
+- Provisioning is a one-time step. If updates to the distribution files needs to happen, another method maybe preferred.
 
 ## Assignment collection and grading
 
@@ -236,7 +258,34 @@ GitHub Classroom does this well -- but only on github.com. Classroom, when used 
 
 ## How are grades returned?
 
+If you return grades and feedback inside the student repository, you'll need to add/commit/push and hope there aren't merge conflicts to resolve.
+
+If grades are returned out of band outside of GHE, it means the grading doesn't need to change the student repository. But that means student would need to check another location for their grades.
+
+### Committing the feedback
+
+If you update the student repository with the grading feedback, the student will need to know how to resolve merge conflicts. (Basically, training them how to do a pull before a push.)
+
+One way to make that easier conflict-wise, is to push to a different branch (or different repository) than normal. This obscures finding the feedback a little, but it's still easy to find (especially when reading them via the web interface).
+
+CS225 used a different repository for grade delivery for Spring 2018 (which fed into other web-based views for the student gradebook). For Fall 2018, they will use a branch in the main student repository.
+
+### Handling inside of git but not a commit
+
+Issues could be useful here.
+
+If continuous integration is used for grading, a grade report could be included in the CI workflow.
+
+### Handling outside of a git server
+
+Many courses use an LMS gradebook, or other web resources for tracking student progress.
+
+One simple problem is to give the feedback and grade for the assignment in other methods than
+
+
 ### Regrade requests?
+
+## Authorization, Permissions and AD groups
 
 ## Gotcha's we have learned
 
@@ -244,6 +293,9 @@ GitHub Classroom does this well -- but only on github.com. Classroom, when used 
 - Adding someone to an organization or repository sends them an email. That might be unexpected.
     - Early provisioning is smart from a course perspective, but might trigger the students to respond or think they need to respond before the course is ready.
 - force pushing, i.e. rewriting git history, should be disabled for student repositories. This is especially true if grading is done based on timestamps from the git log.
+- GitHub Enterprise supports disabling 'force pushes' for repositories or organizations. That is, not letting the user rewrite git history by pushing without a proper merge.
+-- At the moment, this is a GitHub Enterprise admin configuration and isn't toggeable by the organization or repo admin.
+
 
 ## Dave opinion
 
