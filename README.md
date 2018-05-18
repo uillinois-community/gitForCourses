@@ -163,7 +163,7 @@ Cons:
 - Locations, naming, permissions, etc. can be very inconsistent.
 
 Who's done this:
-- Darko Marinov
+- Darko Marinov with CS428/429
 
 This seems to work best for small classes (where tracking the number of repos to grade is easier) and for groups (where they decide and control the membership). This implies some knowledge of git configuration, which might be real-life-applicable for software engineering courses but complex for VCS newbies.
 
