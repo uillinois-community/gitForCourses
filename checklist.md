@@ -2,6 +2,14 @@
 
 A quick list for instructors who want to use the CS225 git methods.
 
+## Overview
+
+* Students get their own repo in a course-semester GitHub organization, created by a web self-service tool
+* Assignments are released in a `_release` repo in that organization
+* Students merge branches from the `_release` repo into their `master` branch and work from there
+* Students push their repo to GitHub Enterprise to make available to grade
+* Grades are distributed into a `_grades` branch in the student repo
+
 ## Things you do once a semester:
 
 ### Organization setup
