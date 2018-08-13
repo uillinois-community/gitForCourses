@@ -200,7 +200,7 @@ Cons:
 
 Who's done this:
 - CS125 (Google Classroom)
-- CS225 (open-sourced web micro-service running on edu.cs.illinois.edu)
+- [CS225 (open-sourced web micro-service running on edu.cs.illinois.edu)](cs225/checklist.md)
 
 ## Assignment distribution
 

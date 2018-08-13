@@ -46,8 +46,12 @@ We have a web micro-service that creates and permissions student repositories in
 1. Fill out the form at https://forms.illinois.edu/sec/8414298
 1. Admins will receive that information and manually configure the micro-service for you. They will email back your URL.
 
-### _release repository setup
+### \_release repository setup
 
 Tips:
 * Use a different git branch for each assignment, and store the files for that assignment in its own directory. That makes updating and merging easier.
-* Do your assignment development in another repository (_staging?) whose access is limited to just course staff. Manually copy the files into the release repo branch when they're ready.
+* Do your assignment development in another repository (\_staging) whose access is limited to just course staff. Manually copy the files into the release repo branch when they're ready.
+
+### Grade returning
+
+For Fall 2018, CS 225 is planning on returning grades to students in a `_grades` branch in the student's repository. Putting grades in a separate branch reduces any conflicts between the student's working branch (`master`) and the `_grades` branch. Students will be instructed not to update files in the `_grades` branch.
