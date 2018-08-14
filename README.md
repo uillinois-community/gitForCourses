@@ -96,7 +96,7 @@ Cons:
 - Students may work on different directories in different locations (lab assignments on EWS computer, MP assignments on their laptop) requiring them to sync up their various copies so stale work doesn't get submitted.
 
 Who's done this:
-- [CS225](scenarios/cs225.md)
+- [CS225](cs225/checklist.md)
 
 ### One organization per semester, one repository per student-assignment
 

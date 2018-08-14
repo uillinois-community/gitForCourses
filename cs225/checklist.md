@@ -55,3 +55,9 @@ Tips:
 ### Grade returning
 
 For Fall 2018, CS 225 is planning on returning grades to students in a `_grades` branch in the student's repository. Putting grades in a separate branch reduces any conflicts between the student's working branch (`master`) and the `_grades` branch. Students will be instructed not to update files in the `_grades` branch.
+
+### CS225 user documentation
+
+As an example, here's the page CS 225 used to document the git process for students.
+
+- https://courses.engr.illinois.edu/cs225/sp2018/resources/git/ (from Spring 2018)
