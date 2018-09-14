@@ -21,3 +21,4 @@ When you sync what's on GitHub down to your local copy of the repository, you do
 > A `pull` is actually just two different git operations: a `fetch` and a `merge`, but to go into that means describing branches which I'm avoiding for now.
 
 Also check out the excellent [Pro Git book](https://git-scm.com/book/en/v2).
+
