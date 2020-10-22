@@ -269,6 +269,7 @@ Pros:
 Cons:
 
 * Impossible to re-run the collection later.
+* Actual collected-time may vary depending on when triggered or when downloaded (based on Internet speed or volume of data to pull) which may affect fairness and accuracy.
 * Relies on what is on the server, which wouldn't reflect a student's commit that they had made locally but had not yet pushed.
 * Since this pull is specific to a due date for an assignment, you may wish to leave it downloaded and not update that copy. That could lead to duplicated student pulls on your computer and wasted space.
 
