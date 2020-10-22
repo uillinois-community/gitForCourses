@@ -254,7 +254,54 @@ Cons:
 
 ### Course triggers collection and grading
 
+There are a few strategies for course-triggered collection of the assignment:
+
+#### Pull at due date
+
+This method involves the instructor doing a pull for the student's repositories at the time of collection and working off those local pulls for grading.
+
+Pros:
+
+* This technique is beneficial because it doesn't care about the commit timestamps supplied by the student, just the overall state of the repository when the assignment is collected.
+* Simple, instructor action triggered (it's just a pull).
+* Grading logic can be based off of HEAD (the last thing committed).
+
+Cons:
+
+* Impossible to re-run the collection later.
+* Actual collected-time may vary depending on when triggered or when downloaded (based on Internet speed or volume of data to pull) which may affect fairness and accuracy.
+* Relies on what is on the server, which wouldn't reflect a student's commit that they had made locally but had not yet pushed.
+* Since this pull is specific to a due date for an assignment, you may wish to leave it downloaded and not update that copy. That could lead to duplicated student pulls on your computer and wasted space.
+
+#### Server inquiry based on commits before the due date
+
+Rather than a traditional git pull, use the GitHub API to search for commits before the due date. Because this uses push log data on the GitHub server, it's safer to trust than only looking at timestamps in the git repository itself.
+
+Pros:
+
+* Repeatable results
+* Can be used to inspect any previous commit in a repository. Does not require downloading and storing specific pulls.
+* Searches for commits based on push date rather than git commit timestamps. The push dates are recorded by the server and are not student changeable.
+
+Cons:
+* Requires interactions with the GitHub server to find the specific commits.
+* Uses the GitHub API rather than (just) traditional git to correspond to push times rather than git commit times.
+* GitHub and GitHub Enterprise specific git server implementation, although other git servers may also have APIs to this data.
+
+The [GitHub repos / listCommits API call](https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#list-commits) has an "until" argument that we found references the commit time on the server's database (which corresponds to the "push" time of the user). Logic can be created to scan the list of commits (backwards) to find the latest commit with the file(s) to be graded. [Example relevant code from CS 225's Zephyr autograder.](https://github-dev.cs.illinois.edu/cs225-staff/zephyr/blob/master/zephyr-code-runner/fetchStudentFiles-git-v2.js#L103)
+
+#### Inspect the student repositories for commit dates (risky)
+
+This method uses the `git log` to identify commits before the due date. Because git commit times are based on computer timestamps, which could be altered by the student, this is the least trusted method. If you're not using one of the above methods for collecting the correct commits, students could alter their repositories to post-date commit dates, submit work after the fact (but before grading), etc.
+
+Cons:
+* Searches for "commits before the due date" in a method that might be manipulated by student.
+* Least preferred method of collection.
+
 ### Student triggers collection and grading
+
+* Continuous Integration grading?
+* Triggers by non-git/GitHub tools to do just-in-time pulls and grading
 
 ## How are grades returned?
 
