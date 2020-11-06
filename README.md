@@ -1,3 +1,6 @@
+This guide was originally written for a UIUC CS hosted GitHub Enterprise and the repository
+hosted on that site. It has been moved to https://github.com/uillinois-community/gitForCourses
+
 # Git for Courses
 
 Documents in this repository describe how different Illinois courses have used
