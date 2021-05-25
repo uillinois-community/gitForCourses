@@ -4,7 +4,7 @@ hosted on that site. It has been moved to https://github.com/uillinois-community
 ## Summer 2021 updates:
 | Date | Update |
 | ---- | ------ |
-| _5/25/21_ | This site will be updated with best practices and guides for transition from our github-dev.cs.illinois.edu service to using GitHub.com. |
+| _2021-05-25_ | This site will be updated with best practices and guides for transition from our github-dev.cs.illinois.edu service to using GitHub.com. |
 
 # Git for Courses
 
